@@ -10,8 +10,9 @@ const displayDataOnWeb = async () => {
         const res = await fetch('https://gutendex.com/books');
         const data = await res.json();
         createBookCard(data.results);
+        searchBook(data.results);
         createGenresOptions(data.results);
-        console.log('data', data.results);
+        console.log('data', data);
         loadingSpinner.style.display = 'none';
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -66,6 +67,18 @@ function createBookCard(books) {
         displayData.appendChild(bookDiv);  
     }
 }
+
+// Search Book by title
+const searchBook = (data) => {
+    searchBox.addEventListener('input', (e) => {
+      const searchTxt = e.target.value.toLowerCase();
+      const searchBooks = data.filter((book) => 
+        book.title.toLowerCase().includes(searchTxt)
+      );
+      createBookCard(searchBooks);
+    });
+  };
+
 
 // Create Options and genre filter
 function createGenresOptions (data) {
