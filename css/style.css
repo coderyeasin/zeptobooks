@@ -127,14 +127,13 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  padding: 0px 20px;
+  padding: 0px 10px;
 }
 .book-card{
   height :500px;
-  width : 300px;
+  width : 280px;
   border : 2px solid green;
   margin :10px;
-  /* opacity : 0; */
   transition : opacity 0.5s;
   color: black;
   position: relative;
@@ -147,7 +146,14 @@ h3 {
 }
 .book-content{
   padding: 0.5rem;
-  letter-spacing: 1px;
+  line-height: 1.7rem;
+}
+.book-content p{
+  font-size: 14px;
+  color: rgba(34, 32, 32, 0.682);
+}
+.book-content .author{
+  color: rgba(34, 32, 32, 0.806);
 }
 .book-btn{
   width: 100%;
@@ -155,7 +161,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  bottom: 0;
+  bottom: 0.5rem;
   position: absolute;
   
 }

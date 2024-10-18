@@ -30,9 +30,9 @@ function createBookCard(books) {
                 <img class="" src="${book.formats['image/jpeg'] || ''}" alt="${book.title || 'Book Cover'}">
                 <div class="book-content">
                     <h3>${book.title.slice(0, 70) || 'Untitled'}</h3>
-                    <p><strong>Book ID: </strong> ${book.id}</p>
-                    <p><strong>Author:</strong> ${book.authors.length > 0 ? book.authors[0].name : 'Unknown Author'}</p>
-                    <p><strong>Genre:</strong> ${book.subjects ? book.subjects.join(', ').slice(0, 40) : 'No Genres Available'}</p>
+                    <p class="author">by ${book.authors.length > 0 ? book.authors[0].name : 'Unknown Author'}</p>
+                    <p>Genre:${book.subjects ? book.subjects.join(', ').slice(0, 40) : 'No Genres Available'}</p>
+                    <p>ID: ${book.id}</p>
                 </div>
                 <div class="book-btn">
                     <button class="details" onclick="goToBookPage(${book.id})"> View Details</button>
