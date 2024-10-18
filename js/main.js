@@ -10,6 +10,7 @@ const displayDataOnWeb = async () => {
         const res = await fetch('https://gutendex.com/books');
         const data = await res.json();
         createBookCard(data.results);
+        createGenresOptions(data.results);
         console.log('data', data.results);
         loadingSpinner.style.display = 'none';
     } catch (error) {
@@ -17,6 +18,28 @@ const displayDataOnWeb = async () => {
         loadingSpinner.innerHTML = 'Error loading data.';
     }
 };
+
+// Function genres
+function getGenres(book) {
+    const genres = new Set();
+  
+    const checkForGenres = (list) => {
+      list.forEach(item => {
+        if (item.includes('Fiction')) genres.add('Fiction');
+        if (item.includes('Horror')) genres.add('Horror');
+        if (item.includes('Fantasy')) genres.add('Fantasy');
+        if (item.includes('Mystery')) genres.add('Mystery');
+        if (item.includes('Romance')) genres.add('Romance');
+        if (item.includes('Science fiction')) genres.add('Science Fiction');
+      });
+    };
+
+    checkForGenres(book.subjects);
+    checkForGenres(book.bookshelves);
+  
+    return genres ? Array.from(genres) : 'No Genres Available';
+  }
+  
 
 // Create book card
 function createBookCard(books) { 
@@ -29,9 +52,9 @@ function createBookCard(books) {
             <div class="bookCover" onclick="goToBookPage(${book.id})"> 
                 <img class="" src="${book.formats['image/jpeg'] || ''}" alt="${book.title || 'Book Cover'}">
                 <div class="book-content">
-                    <h3>${book.title.slice(0, 70) || 'Untitled'}</h3>
+                    <h3>${book.title.length > 70 ? book.title.slice(0, 70) + '...' : book.title || 'Untitled'}</h3>
                     <p class="author">by ${book.authors.length > 0 ? book.authors[0].name : 'Unknown Author'}</p>
-                    <p>Genre:${book.subjects ? book.subjects.join(', ').slice(0, 40) : 'No Genres Available'}</p>
+                    <p>Genre:${getGenres(book)}</p>
                     <p>ID: ${book.id}</p>
                 </div>
                 <div class="book-btn">
@@ -43,6 +66,32 @@ function createBookCard(books) {
         displayData.appendChild(bookDiv);  
     }
 }
+
+// Create Options and genre filter
+function createGenresOptions (data) {
+    const uniqueGenres = new Set(); 
+    data.forEach(book => {
+            getGenres(book).forEach(genre => uniqueGenres.add(genre));
+        });
+        uniqueGenres.forEach(genre => {
+            const option = document.createElement('option');
+            option.value = genre;
+            option.textContent = genre;
+            filterByGenre.appendChild(option);
+        });
+    
+    // genre filter
+    filterByGenre.addEventListener('change', async (e) => {
+        const selectedGenre = e.target.value;
+        const filteredBooks = data.filter(book => {
+            const genres = getGenres(book);
+            return selectedGenre === '' || genres.includes(selectedGenre);
+        });
+        createBookCard(filteredBooks);
+    });
+
+}
+
 
 // Call the function to display data on web
 displayDataOnWeb();
