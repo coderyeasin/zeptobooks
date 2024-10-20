@@ -20,7 +20,7 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/files/wishlist.html">Wishlist</a></li>
-                    <li><a href="/files/details.html">Mode</a></li>
+                    <li><a href="/files/details.html">Details</a></li>
                 </ul>
             </nav>
         </header>
@@ -34,16 +34,17 @@
                         aria-label="Search Books">
                 </div>
                 <div class="filter">
-                    <h3 class="text-xl font-bold">Filter by Genres</h3>
-                    <select id="genreFilter">
-                        <option value="">All Genres</option>
-                        <!-- Genres will be populated dynamically -->
-                    </select>
+                    <h3>Filter by Genres</h3>
+                    <select id="genreFilter"> </select>
                 </div>
             </section>
 
+            <!-- Book Card -->
             <div id="loading" style="display: none;"></div>
             <div id="displayData"></div>
+
+            <!-- pagination -->
+            <div id="pagination">            </div>
         </main>
 
     </div>
