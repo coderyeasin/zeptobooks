@@ -201,14 +201,14 @@ h3 {
   cursor: pointer;
 }
 
-/* #pagination button{
+#pagination button{
   all: unset;
   border: 2px solid #afafaf;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
   cursor: pointer;
-} */
+}
 
 .active {
   font-weight: bold;
