@@ -10,6 +10,12 @@ let allBooks = [];
 let filteredBooks = [];
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
+// For hamburger
+function toggleMenu() {
+    const menu = document.querySelector('.nav-menu');
+    menu.classList.toggle('active');
+}
+
 // Fetch data
 const fetchData = async (page) => {
     try {
@@ -58,6 +64,7 @@ const updateDisplay = (booksToDisplay) => {
                     <h3>${book.title.length > 70 ? book.title.slice(0, 70) + '...' : book.title || 'Untitled'}</h3>
                     <p class="author">by ${book.authors.length > 0 ? book.authors[0].name : 'Unknown Author'}</p>
                     <p>Genre: ${getGenres(book).join(', ') || 'No Genres Available'}</p>
+                    <p>ID: ${book.id || 'No ID Available'}</p>
                 </div>
                 <div class="book-btn">
                     <button class="details" onclick="goToBookPage(${book.id})">View Details</button>
