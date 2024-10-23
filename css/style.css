@@ -226,6 +226,12 @@ h3 {
   max-height: 200px; 
 }
 
+/* nav ul {
+  display: flex;
+  flex-direction: column; 
+  width: 100%;
+  background: #2f3031;
+} */
 
 /* Responsive Styles */
 @media (max-width: 768px) {
