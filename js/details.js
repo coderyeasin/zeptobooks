@@ -19,3 +19,9 @@ if (currentBook) {
 } else {
     bookDetail.innerHTML = '<p>No book selected.</p>';
 }
+
+// For hamburger
+function toggleMenu() {
+    const menu = document.querySelector('.nav-menu');
+    menu.classList.toggle('active');
+}
