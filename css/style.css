@@ -212,26 +212,10 @@ h3 {
   font-size: 24px;
 }
 
-.nav-menu {
-  width: 100%;
-  top: 4rem;
-  background-color: cornflowerblue;
-  position: absolute;
-  overflow: hidden;
-  max-height: 0; 
-  transition: max-height 0.3s ease-out; 
-}
-
 .nav-menu.active {
   max-height: 200px; 
 }
 
-/* nav ul {
-  display: flex;
-  flex-direction: column; 
-  width: 100%;
-  background: #2f3031;
-} */
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -245,22 +229,41 @@ h3 {
     display: block; 
     border: 2px solid #afafaf;
 }
-nav ul li a {
-  padding: 8px 40px;
-  color: #afafaf;
-  border-radius: 7px;
-  transition: 0.3s;
+.nav-menu {
+  width: 90%;
+  top: 3.5rem;
+  position: absolute;
+  overflow: hidden;
+  max-height: 0; 
+  transition: max-height 0.3s ease-out; 
 }
-/* nav ul li a:hover {
-  background: #3a3b3c;
-} */
+
+nav ul {
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    background: #2f3031;
+    padding: 0.5rem;
+  }
+
+.nav-menu ul li {
+    padding: 0.5rem;
+    transition: 0.3s;
+  }
+
+  .nav-menu ul li:hover {
+    color: white;
+    border: 2px solid salmon;
+    border-radius: 5px;
+  }
   .book-functions {
       flex-direction: column;
       align-items: stretch;
+      margin-top: 0;
   }
   .search {
       margin-right: 0;  
-      margin-top: 3rem;
+      margin-top: 0rem;
   }
   #searchId {
       margin-bottom: 10px;
