@@ -1,6 +1,13 @@
 const wishlistData = document.getElementById('wishlist');
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
+// For hamburger
+function toggleMenu() {
+    const menu = document.querySelector('.nav-menu');
+    menu.classList.toggle('active');
+}
+
+
 function getGenres(book) {
     const genres = new Set();
     const checkForGenres = (list) => {
